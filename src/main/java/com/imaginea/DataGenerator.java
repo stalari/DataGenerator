@@ -133,13 +133,14 @@ public class DataGenerator {
             int length;
             while ((length = inputStream.read(fileSize)) > 0) {
                 gzipOutputStream.write(fileSize, 0, length);
-                Thread.sleep(200);
+                Thread.sleep(300);
             }
             gzipOutputStream.finish();
             gzipOutputStream.close();
             LOGGER.info("Successfully created gzipped file for the fie -{}",fileName);
-
+            Runtime.getRuntime().gc();
         }
+
         LOGGER.info("Total time taken-{}",
                 (System.currentTimeMillis() - startTime));
     }
@@ -194,7 +195,7 @@ public class DataGenerator {
     private static long getFileSize(long minSIze, long maxSize) {
         long fileSize = 0;
         if (maxSize == 0 && minSIze == 0) {
-            fileSize = 1024 * 1024 * 1024 * 1;
+            fileSize = (1024 * 1024 * 1024) +(1024 * 1024 * 512);
         }
         return fileSize;
     }
