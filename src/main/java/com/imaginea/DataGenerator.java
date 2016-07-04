@@ -83,8 +83,7 @@ public class DataGenerator {
             Path inFile = Paths.get("sample.log");
             try (FileChannel in = FileChannel.open(inFile, READ)) {
                 while (file.length() < (1024 * 1024 * 4)) {
-                    System.out.println("Size::" + in.size());
-                    for (long p = 0, l = in.size(); p < l;) {
+                   for (long p = 0, l = in.size(); p < l;) {
                         p += in.transferTo(p, l - p, out);
                     }
                 }
