@@ -126,7 +126,7 @@ public class DataGenerator {
             LOGGER.info("Creating zip file for the file -{}",fileName);
             WritableByteChannel channel = null;
             GZIPOutputStream gzipOutputStream = new GZIPOutputStream(
-                    new FileOutputStream(fileName + ".gz"));
+                    new FileOutputStream(fileName +".log"+ ".gz"));
 
             channel = Channels.newChannel(gzipOutputStream);
             FileInputStream inputStream = new FileInputStream(file);
