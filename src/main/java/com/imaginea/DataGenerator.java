@@ -49,7 +49,7 @@ public class DataGenerator {
             fileMInSize = Long.parseLong(args[1]);
             fileMaxSize = Long.parseLong(args[2]);
         } else if (args.length >= 2) {
-            LOGGER.info("Number of filess-{}" , args[0]
+            LOGGER.info("Number of files-{}" , args[0]
                     + "   , minumum size-{}" , args[1]);
             numberOfFiles = Integer.parseInt(args[0]);
             fileMInSize = Long.parseLong(args[1]);
@@ -107,6 +107,12 @@ public class DataGenerator {
             outFile = Paths.get(file.getAbsolutePath());
             LOGGER.info("TO -{}", outFile);
             try (FileChannel out = FileChannel.open(outFile, CREATE, WRITE)) {
+                Path inFileForHeader=Paths.get("skipFile.log");
+                try (FileChannel in = FileChannel.open(inFileForHeader, READ)) {
+                    for (long p = 0, l = in.size(); p < l;) {
+                        p += in.transferTo(p, l - p, out);
+                    }
+                }
                 Path inFile = Paths.get("datageneratorfile.log");
                 LOGGER.info("Copying data from...-{} ", inFile);
                 for (int j = 0; j < numberOfTimesToRotate / 16; j++) {
