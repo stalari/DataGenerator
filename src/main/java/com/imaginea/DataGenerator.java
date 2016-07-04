@@ -133,6 +133,7 @@ public class DataGenerator {
             int length;
             while ((length = inputStream.read(fileSize)) > 0) {
                 gzipOutputStream.write(fileSize, 0, length);
+                Thread.sleep(200);
             }
             gzipOutputStream.finish();
             gzipOutputStream.close();
