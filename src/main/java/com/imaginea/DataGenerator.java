@@ -43,18 +43,18 @@ public class DataGenerator {
         long fileMInSize = 0;
         long fileMaxSize = 0;
         if (args.length >= 3) {
-            LOGGER.info("Number of files-{}" + args[0] + "   , minumum size-{}"
-                    + args[1] + "   ,maximum size-{}" + args[2]);
+            LOGGER.info("Number of files-{}" ,args[0] , "   , minumum size-{}"
+                    ,args[1] , "   ,maximum size-{}" , args[2]);
             numberOfFiles = Integer.parseInt(args[0]);
             fileMInSize = Long.parseLong(args[1]);
             fileMaxSize = Long.parseLong(args[2]);
         } else if (args.length >= 2) {
-            LOGGER.info("Number of filess-{}" + args[0]
-                    + "   , minumum size-{}" + args[1]);
+            LOGGER.info("Number of filess-{}" , args[0]
+                    + "   , minumum size-{}" , args[1]);
             numberOfFiles = Integer.parseInt(args[0]);
             fileMInSize = Long.parseLong(args[1]);
         } else if (args.length >= 1) {
-            LOGGER.info("Number of files-{}" + args[0]);
+            LOGGER.info("Number of files-{}" , args[0]);
             numberOfFiles = Integer.parseInt(args[0]);
         }
 
